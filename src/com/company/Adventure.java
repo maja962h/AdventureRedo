@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 public class Adventure {
     Scanner input = new Scanner(System.in);
-    Map m = new Map(1);
+    Map map = new Map();
+    Room startRoom;
+    Room currentRoom;
+
 
     public Adventure(){
-
+        startRoom = map.getstartRoom();
+        currentRoom = startRoom;
     }
 
     public void gamePlay(){
@@ -17,49 +21,49 @@ public class Adventure {
                 "\nNorth: 'go north'\nSouth: 'go south'\nEast: 'go east'\nWest: 'go west'");
         System.out.println("Good luck, and don't get caught.\n");
 
-        System.out.println(m.currentRoom);
+        System.out.println(currentRoom);
 
         while (true) {
             String direction = input.next().trim().toLowerCase(Locale.ROOT);
             switch (direction) {
                 case "north", "go north", "n":
-                    if (m.currentRoom.getNorth() == null) {
+                    if (currentRoom.getNorth() == null) {
                         System.out.println("You can't enter from this direction.");
                     } else {
-                        m.currentRoom = m.currentRoom.getNorth();
-                        System.out.println(m.currentRoom);
+                        currentRoom = currentRoom.getNorth();
+                        System.out.println(currentRoom);
                     }
                     break;
 
                 case "south", "go south", "s":
-                    if (m.currentRoom.getSouth() == null) {
+                    if (currentRoom.getSouth() == null) {
                         System.out.println("You can't enter from this direction.");
                     } else {
-                        m.currentRoom = m.currentRoom.getSouth();
-                        System.out.println(m.currentRoom);
+                        currentRoom = currentRoom.getSouth();
+                        System.out.println(currentRoom);
                     }
                     break;
 
                 case "west", "go west", "w":
-                    if (m.currentRoom.getWest() == null) {
+                    if (currentRoom.getWest() == null) {
                         System.out.println("You can't enter from this direction.");
                     } else {
-                        m.currentRoom = m.currentRoom.getWest();
-                        System.out.println(m.currentRoom);
+                        currentRoom = currentRoom.getWest();
+                        System.out.println(currentRoom);
                     }
                     break;
 
                 case "east", "go east", "e":
-                    if (m.currentRoom.getEast() == null) {
+                    if (currentRoom.getEast() == null) {
                         System.out.println("You can't enter from this direction.");
                     } else {
-                        m.currentRoom = m.currentRoom.getEast();
-                        System.out.println(m.currentRoom);
+                        currentRoom = currentRoom.getEast();
+                        System.out.println(currentRoom);
                     }
                     break;
 
                 case "look":
-                    System.out.println(m.currentRoom);
+                    System.out.println(currentRoom);
                     break;
 
                 case "help":
@@ -70,12 +74,48 @@ public class Adventure {
                     System.out.println("Thank you for robbing with us :)");
                     System.exit(0);
                     break;
+
+                case "inventory":
+                    System.out.println();
+                    break;
+
+                case "take":
+                    System.out.println("you picked up: ");
+                    break;
+
+                case "drop":
+                    System.out.println("You dropped: ");
+                    break;
+
+                case "crawl":
+                    System.out.println("The gutter was very loose, and you fell to your death.");
+                    System.exit(0);
+                    break;
+
+                case "jump":
+                    System.out.println("You could not jump high enough, idiot. Your leg is now broken. boohoo.");
+                    System.exit(0);
+
+                case "use":
+                    System.out.println("");
+                    break;
+
+                case "give":
+                    System.out.println("");
+                    break;
+
+                case "wear":
+                    System.out.println("The necklace is cursed, and you died. The end.");
+                    System.exit(0);
+                    break;
                 }
             }
 
-
-
         }
+
+
+
+
 
     }
 
