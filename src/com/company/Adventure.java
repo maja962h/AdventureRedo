@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Adventure {
     Scanner input = new Scanner(System.in);
     Map map = new Map();
+    Player player = new Player();
+    Room room = new Room("","");
     Room startRoom;
     Room currentRoom;
 
@@ -64,10 +66,12 @@ public class Adventure {
 
                 case "look":
                     System.out.println(currentRoom);
+                    room.getInventory();
                     break;
 
                 case "help":
-                    System.out.println("List of commands:\nNorth: 'go north'\nSouth: 'go south'\nEast: 'go east'\nWest: 'go west'");
+                    System.out.println("List of commands:\nNorth: 'go north'\nSouth: 'go south'\nEast: 'go east'" +
+                            "\nWest: 'go west'\nTake item: 'take'\nDrop item: 'drop'\nCheck inventory: 'inventory'");
                     break;
 
                 case "exit":
@@ -76,15 +80,17 @@ public class Adventure {
                     break;
 
                 case "inventory":
-                    System.out.println();
+                    player.getPlayerInventory();
                     break;
 
                 case "take":
                     System.out.println("you picked up: ");
+                    player.takeItem("");
                     break;
 
                 case "drop":
                     System.out.println("You dropped: ");
+                    player.dropItem("");
                     break;
 
                 case "crawl":
@@ -105,14 +111,18 @@ public class Adventure {
                     break;
 
                 case "wear":
-                    System.out.println("The necklace is cursed, and you died. The end.");
+                    System.out.println("You are now cursed. Good luck with that.");
                     System.exit(0);
                     break;
                 }
+
+
             }
 
-        }
 
+
+
+        }
 
 
 

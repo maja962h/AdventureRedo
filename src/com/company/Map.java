@@ -10,8 +10,7 @@ public class Map {
     public Map(){
         Room room1 = new Room("Shed behind the house", "The shed is empty. The tools might be elsewhere.");
 
-        Room room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of. " +
-                "There is a pair of gloves laying between the flowers.\nWould be a good way to hide your fingerprints.");
+        Room room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of.");
         /*if (r.inventory.contains("gloves")){
                 room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of. " +
                 "There is a pair of gloves laying between the flowers.\nWould be a good way to hide your fingerprints.");
@@ -21,15 +20,14 @@ public class Map {
 
         Room room3 = new Room("Sandbox", "The sand it soaked from the rain.");
 
-        Room room4 = new Room("Left side of house", "The gutter going up to the roof is on this side. You can attempt to crawl it.");
+        Room room4 = new Room("Left side of house", "The gutter going up to the roof is on this side. You can attempt to crawl it. \nWhat to type: 'crawl'");
 
-        Room room5 = new Room("Inside of the house", "You got inside, and found a mysterious necklace, and you are now cursed. Good luck with that.");
+        Room room5 = new Room("Inside of the house", "You got inside, and found a mysterious necklace.\nType 'wear' to pick it up");
 
         Room room6 = new Room("Trampoline", "There is a trampoline next to the house, and an open window on the first floor. " +
-                "You can attempt to jump up and enter the house this way.");
+                "You can attempt to jump up and enter the house this way.\nWhat to type: 'jump'");
 
-        Room room7 = new Room("Driveway", "You find a squeaky toy in the gravel.\nWARNING: you are visible from the street. " +
-                "Don't stay for too long.");
+        Room room7 = new Room("Driveway", "\nWARNING: you are visible from the street. Don't stay for too long.");
         /*if (r.inventory.contains("squeaky toy")){
             room7 = new Room("Driveway", "You find a squeaky toy in the gravel.\nWARNING: you are visible from the street. " +
                     "Don't stay for too long.");
@@ -40,15 +38,13 @@ public class Map {
 
         Room room8 = new Room("Front door", "Try to get in.\nWARNING: you are visible from the street. Don't stay for too long.");
 
-        Room room9 = new Room("Dog house", "There is a shiny object inside.\nWARNING: " +
-                "you are visible from the street. Don't stay for too long.");
+        Room room9 = new Room("Dog house", "\nWARNING: you are visible from the street. Don't stay for too long.");
         /*if(r.inventory.contains("key")){
             room9 = new Room("Dog house", "There is a shiny object inside.\nWARNING: " +
                 "you are visible from the street. Don't stay for too long.");
         } else {
             room9 = new Room("Dog House", "The dog house is empty.\nWARNING: you are visible from the street. Don't stay for too long.");
         }*/
-
 
         // TODO: dog house has the spare key.
         // TODO: player will have two options to pick in the house. could be curse or could be gold.
