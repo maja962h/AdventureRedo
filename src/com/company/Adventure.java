@@ -12,6 +12,7 @@ public class Adventure {
 
 
     public Adventure(){
+        map.createMap();
         startRoom = map.getstartRoom();
         currentRoom = startRoom;
     }
@@ -34,6 +35,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getNorth();
                         System.out.println(currentRoom);
+                        currentRoom.getInventory();
                     }
                     break;
 
@@ -43,6 +45,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getSouth();
                         System.out.println(currentRoom);
+                        currentRoom.getInventory();
                     }
                     break;
 
@@ -52,6 +55,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getWest();
                         System.out.println(currentRoom);
+                        currentRoom.getInventory();
                     }
                     break;
 
@@ -61,17 +65,19 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getEast();
                         System.out.println(currentRoom);
+                        currentRoom.getInventory();
                     }
                     break;
 
                 case "look":
                     System.out.println(currentRoom);
-                    room.getInventory();
+                    currentRoom.getInventory();
                     break;
 
                 case "help":
                     System.out.println("List of commands:\nNorth: 'go north'\nSouth: 'go south'\nEast: 'go east'" +
-                            "\nWest: 'go west'\nTake item: 'take'\nDrop item: 'drop'\nCheck inventory: 'inventory'");
+                            "\nWest: 'go west'\nTo take items, type: 'take', and then type item name.\nTo Drop items, type: 'drop', and then type item name." +
+                            "\nCheck inventory: 'inventory'");
                     break;
 
                 case "exit":
@@ -84,13 +90,13 @@ public class Adventure {
                     break;
 
                 case "take":
-                    System.out.println("you picked up: ");
-                    player.takeItem("");
+                    String itemToPickUp = input.next();
+                    player.takeItem(currentRoom,itemToPickUp);
                     break;
 
                 case "drop":
-                    System.out.println("You dropped: ");
-                    player.dropItem("");
+                    String itemToDrop = input.next();
+                    player.dropItem(currentRoom,itemToDrop);
                     break;
 
                 case "crawl":
@@ -102,13 +108,6 @@ public class Adventure {
                     System.out.println("You could not jump high enough, idiot. Your leg is now broken. boohoo.");
                     System.exit(0);
 
-                case "use":
-                    System.out.println("");
-                    break;
-
-                case "give":
-                    System.out.println("");
-                    break;
 
                 case "wear":
                     System.out.println("You are now cursed. Good luck with that.");

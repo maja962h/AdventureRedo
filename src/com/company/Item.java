@@ -4,7 +4,7 @@ public class Item {
 
     public String itemLongName;
     public String itemShortName;
-    public String itemDescription;
+    //public String itemDescription;
 
     public Item(String itemLongName, String itemShortName){
         this.itemLongName = itemLongName;
@@ -12,11 +12,11 @@ public class Item {
 
     }
 
-    public String getItemLongNameName() {
+    public String getItemLongName() {
         return itemLongName;
     }
 
-    public void setItemLongNameName(String itemName) {
+    public void setItemLongName(String itemName) {
         this.itemLongName = itemName;
     }
 

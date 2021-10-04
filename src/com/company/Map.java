@@ -4,12 +4,14 @@ public class Map {
 
 
     private Room startRoom;
-    Item i = new Item("","");
-    Room r = new Room("","");
 
-    public Map(){
+    public Map() {
+
+
+    }
+
+    public void createMap(){
         Room room1 = new Room("Shed behind the house", "The shed is empty. The tools might be elsewhere.");
-
         Room room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of.");
         /*if (r.inventory.contains("gloves")){
                 room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of. " +
@@ -17,16 +19,11 @@ public class Map {
         } else {
                 room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of. ");
         }*/
-
         Room room3 = new Room("Sandbox", "The sand it soaked from the rain.");
-
         Room room4 = new Room("Left side of house", "The gutter going up to the roof is on this side. You can attempt to crawl it. \nWhat to type: 'crawl'");
-
         Room room5 = new Room("Inside of the house", "You got inside, and found a mysterious necklace.\nType 'wear' to pick it up");
-
         Room room6 = new Room("Trampoline", "There is a trampoline next to the house, and an open window on the first floor. " +
                 "You can attempt to jump up and enter the house this way.\nWhat to type: 'jump'");
-
         Room room7 = new Room("Driveway", "\nWARNING: you are visible from the street. Don't stay for too long.");
         /*if (r.inventory.contains("squeaky toy")){
             room7 = new Room("Driveway", "You find a squeaky toy in the gravel.\nWARNING: you are visible from the street. " +
@@ -35,9 +32,7 @@ public class Map {
             room7 = new Room("Driveway", "There is no car parked in the driveway.\nWARNING: you are visible from the street. " +
                     "Don't stay for too long.");
         }*/
-
         Room room8 = new Room("Front door", "Try to get in.\nWARNING: you are visible from the street. Don't stay for too long.");
-
         Room room9 = new Room("Dog house", "\nWARNING: you are visible from the street. Don't stay for too long.");
         /*if(r.inventory.contains("key")){
             room9 = new Room("Dog house", "There is a shiny object inside.\nWARNING: " +
@@ -53,7 +48,6 @@ public class Map {
         room1.setEast(room2);
         room2.setEast(room3);
         room2.setWest(room1);
-        room2.addItemsToRoom(new Item("gloves", "g"));
         room3.setSouth(room6);
         room3.setWest(room2);
         room4.setNorth(room1);
@@ -63,16 +57,18 @@ public class Map {
         room6.setSouth(room9);
         room7.setNorth(room4);
         room7.setEast(room8);
-        room7.addItemsToRoom(new Item("squeaky toy", "st"));
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
         room9.setNorth(room6);
         room9.setWest(room8);
-        room9.addItemsToRoom(new Item("key", "k"));
+
+        room2.addItemsToRoom("gloves", "A pair if gloves could be a good way to hide your fingerprints.");
+        room7.addItemsToRoom("squeaky toy", "You find a squeaky toy in the gravel.");
+        room9.addItemsToRoom("key", "There is a shiny object inside the Dog house.");
+
 
         startRoom = room1;
-
     }
 
     public Room getstartRoom() {

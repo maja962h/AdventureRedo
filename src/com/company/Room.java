@@ -17,7 +17,6 @@ public class Room {
     public Room(String name, String description){
         this.name = name;
         this.description = description;
-
     }
 
     public Room getNorth() {
@@ -52,9 +51,13 @@ public class Room {
         this.west = west;
     }
 
-    public Item addItemsToRoom(Item item){
+    public void addItemsToRoom(String itemN, String itemD){
+        Item item = new Item(itemN,itemD);
         inventory.add(item);
-        return item;
+    }
+
+    public void addItems(Item item){
+        inventory.add(item);
     }
 
     // Removes items, when player picks them up.
@@ -72,7 +75,7 @@ public class Room {
             System.out.println("There are no items to find here.");
         } else {
             for(int i = 0; i < inventory.size(); i++);
-            System.out.println(", are in this area.");
+            System.out.println(inventory);
         }
     }
 
@@ -80,4 +83,5 @@ public class Room {
     public String toString() {
         return name + "\n" + description;
     }
+
 }
