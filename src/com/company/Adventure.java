@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,13 +11,13 @@ public class Adventure {
     private Room currentRoom;
 
 
-    public Adventure(){
+    public Adventure() {
         map.createMap();
         startRoom = map.getstartRoom();
         currentRoom = startRoom;
     }
 
-    public void gamePlay(){
+    public void gamePlay() {
         System.out.println("Welcome to burglar simulator 2K21! Today we are trying to break into yet another house.");
         System.out.println("There are 8 areas around the house, where you can look for items to aid you in your crimes.");
         System.out.println("To move between areas, type commands like these:" +
@@ -90,12 +91,12 @@ public class Adventure {
 
                 case "take":
                     String itemToPickUp = input.next();
-                    player.takeItem(currentRoom,itemToPickUp);
+                    player.takeItem(currentRoom, itemToPickUp);
                     break;
 
                 case "drop":
                     String itemToDrop = input.next();
-                    player.dropItem(currentRoom,itemToDrop);
+                    player.dropItem(currentRoom, itemToDrop);
                     break;
 
                 case "crawl":
@@ -126,27 +127,20 @@ public class Adventure {
                 case "eat": // TODO: eat does not work
                     String foodToEat = input.next();
                     Status status = player.eat(foodToEat);
-                    if(foodToEat.equalsIgnoreCase("eat")){
-                        switch (status) {
-                            case NOTFOUND -> System.out.println("There is no " + foodToEat + ".");
-                            case CANT -> System.out.println("You cannot eat " + foodToEat + ".");
-                            case OKAY -> System.out.println("Yout have eaten " + foodToEat + ". Current HP " +
-                                    player.showPlayerHP() + ".");
-                        }
+                    switch (status) {
+                        case NOTFOUND -> System.out.println("There is no " + foodToEat + ".");
+                        case CANT -> System.out.println("You cannot eat " + foodToEat + ".");
+                        case OKAY -> System.out.println("Yout have eaten " + foodToEat + ". Current HP " +
+                                player.showPlayerHP() + ".");
                     }
                     break;
-                }
-
-
-
-
-
             }
 
 
-
-
         }
+
+
+    }
 
 
     /*public void getPlayerHP() {
@@ -167,8 +161,6 @@ public class Adventure {
             System.out.println(playerHP + " - You're pretty dead, idk what to tell ya.");
         }
     }*/
-
-
 
 
 }
