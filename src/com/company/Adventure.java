@@ -3,12 +3,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Adventure {
-    Scanner input = new Scanner(System.in);
-    Map map = new Map();
-    Player player = new Player();
-    Room room = new Room("","");
-    Room startRoom;
-    Room currentRoom;
+    private Scanner input = new Scanner(System.in);
+    private Map map = new Map();
+    private Player player = new Player();
+    private Room startRoom;
+    private Room currentRoom;
 
 
     public Adventure(){
@@ -35,7 +34,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getNorth();
                         System.out.println(currentRoom);
-                        currentRoom.getInventory();
+                        System.out.println(currentRoom.getInventory());
                     }
                     break;
 
@@ -45,7 +44,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getSouth();
                         System.out.println(currentRoom);
-                        currentRoom.getInventory();
+                        System.out.println(currentRoom.getInventory());
                     }
                     break;
 
@@ -55,7 +54,7 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getWest();
                         System.out.println(currentRoom);
-                        currentRoom.getInventory();
+                        System.out.println(currentRoom.getInventory());
                     }
                     break;
 
@@ -65,19 +64,19 @@ public class Adventure {
                     } else {
                         currentRoom = currentRoom.getEast();
                         System.out.println(currentRoom);
-                        currentRoom.getInventory();
+                        System.out.println(currentRoom.getInventory());
                     }
                     break;
 
                 case "look":
                     System.out.println(currentRoom);
-                    currentRoom.getInventory();
+                    System.out.println(currentRoom.getInventory());
                     break;
 
                 case "help":
                     System.out.println("List of commands:\nNorth: 'go north'\nSouth: 'go south'\nEast: 'go east'" +
-                            "\nWest: 'go west'\nTo take items, type: 'take', and then type item name.\nTo Drop items, type: 'drop', and then type item name." +
-                            "\nCheck inventory: 'inventory'");
+                            "\nWest: 'go west'\nTo take items, type: 'take', and then type item letter.\nTo Drop items, " +
+                            "type: 'drop', and then type item letter.\nCheck inventory: 'inventory'");
                     break;
 
                 case "exit":
@@ -100,20 +99,46 @@ public class Adventure {
                     break;
 
                 case "crawl":
-                    System.out.println("The gutter was very loose, and you fell to your death.");
-                    System.exit(0);
+                    System.out.println("The gutter was very loose, and you fell down.");
+                    player.takDamage(30);
+                    System.out.println("\nYou lost 30 HP");
+                    System.out.println("Health status: " + player.showPlayerHP());
                     break;
 
                 case "jump":
                     System.out.println("You could not jump high enough, idiot. Your leg is now broken. boohoo.");
-                    System.exit(0);
+                    player.takDamage(50);
+                    System.out.println("\nYou lost 50 HP");
+                    System.out.println("Health status: " + player.showPlayerHP());
+                    break;
 
 
                 case "wear":
                     System.out.println("You are now cursed. Good luck with that.");
                     System.exit(0);
                     break;
+
+                case "health":
+                    System.out.println("Current HP: ");
+                    System.out.println(player.showPlayerHP());
+                    break;
+
+                case "eat": // TODO: eat does not work
+                    String foodToEat = input.next();
+                    Status status = player.eat(foodToEat);
+                    if(foodToEat.equalsIgnoreCase("eat")){
+                        switch (status) {
+                            case NOTFOUND -> System.out.println("There is no " + foodToEat + ".");
+                            case CANT -> System.out.println("You cannot eat " + foodToEat + ".");
+                            case OKAY -> System.out.println("Yout have eaten " + foodToEat + ". Current HP " +
+                                    player.showPlayerHP() + ".");
+                        }
+                    }
+                    break;
                 }
+
+
+
 
 
             }
@@ -124,9 +149,29 @@ public class Adventure {
         }
 
 
+    /*public void getPlayerHP() {
+        int playerHP = 0;
+        int maxHP = 100;
+
+        if(playerHP == maxHP){
+            System.out.println(playerHP + " - Full health.");
+        } else if (playerHP < maxHP && playerHP >= 70){
+            System.out.println(playerHP + " - Still standing strong.");
+        } else if (playerHP < 70 && playerHP >= 50){
+            System.out.println(playerHP + " - Be extra careful around enemies.");
+        } else if (playerHP < 50 && playerHP >= 25){
+            System.out.println(playerHP + " - You should consider getting sustenance.");
+        } else if (playerHP < 25 && playerHP > 0){
+            System.out.println(playerHP + " - You're not quite dead yet.");
+        } else if (playerHP <= 0){
+            System.out.println(playerHP + " - You're pretty dead, idk what to tell ya.");
+        }
+    }*/
 
 
-    }
+
+
+}
 
 
 

@@ -51,8 +51,8 @@ public class Room {
         this.west = west;
     }
 
-    public void addItemsToRoom(String itemN, String itemD){
-        Item item = new Item(itemN,itemD);
+    public void addItemsToRoom(String itemN, String itemSN){
+        Item item = new Item(itemN, itemSN);
         inventory.add(item);
     }
 
@@ -69,15 +69,16 @@ public class Room {
         return null;
     }
 
-    // Shows if there are intems in the room or not.
-    public void getInventory() {
+    // Shows if there are items in the room or not.
+    public ArrayList getInventory() {
         if(inventory.isEmpty()){
             System.out.println("There are no items to find here.");
         } else {
             for(int i = 0; i < inventory.size(); i++);
-            System.out.println(inventory);
         }
+        return inventory;
     }
+
 
     @Override
     public String toString() {

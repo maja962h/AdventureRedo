@@ -2,14 +2,13 @@ package com.company;
 
 public class Item {
 
-    public String itemLongName;
-    public String itemShortName;
+    private String itemLongName;
+    private String itemShortName;
     //public String itemDescription;
 
     public Item(String itemLongName, String itemShortName){
         this.itemLongName = itemLongName;
         this.itemShortName = itemShortName;
-
     }
 
     public String getItemLongName() {
@@ -27,15 +26,6 @@ public class Item {
     public void setItemShortName(String itemShortName) {
         this.itemShortName = itemShortName;
     }
-
-  /*  public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-    }
-*/  // Don't know if description is needed.
 
     @Override
     public String toString() {

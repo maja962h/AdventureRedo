@@ -11,7 +11,7 @@ public class Map {
     }
 
     public void createMap(){
-        Room room1 = new Room("Shed behind the house", "The shed is empty. The tools might be elsewhere.");
+        Room room1 = new Room("Shed behind the house", "");
         Room room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of.");
         /*if (r.inventory.contains("gloves")){
                 room2 = new Room("Flower beds", "The flowers are in full bloom, they must be well take care of. " +
@@ -63,9 +63,16 @@ public class Map {
         room9.setNorth(room6);
         room9.setWest(room8);
 
-        room2.addItemsToRoom("gloves", "A pair if gloves could be a good way to hide your fingerprints.");
-        room7.addItemsToRoom("squeaky toy", "You find a squeaky toy in the gravel.");
-        room9.addItemsToRoom("key", "There is a shiny object inside the Dog house.");
+        // items:
+        room2.addItemsToRoom("gloves", "g");
+        room7.addItemsToRoom("squeaky toy", "s");
+        room9.addItemsToRoom("key", "k");
+
+        // food:
+        /*room1.addFoodToRoom("apple", "a", 15, FoodAtts.EDIBLE);
+        room6.addFoodToRoom("protein bar", "p", 30, FoodAtts.EDIBLE);*/
+        room3.addItems(new Food("apple", "a", 15));
+        room6.addItems(new Food("protein bar", "p", 30));
 
 
         startRoom = room1;
