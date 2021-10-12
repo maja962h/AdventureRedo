@@ -15,8 +15,11 @@ public class Player {
                 this.startHP = maxHP;
             }
 
+            public int getStartHP() {
+                return startHP;
+            }
 
-            // Shows if there are items in the player's inventory or not.
+    // Shows if there are items in the player's inventory or not.
             public void getPlayerInventory() {
                 if (playerInventory.isEmpty()) {
                     System.out.println("Your inventory is empty.");
@@ -56,11 +59,6 @@ public class Player {
             }
 
 
-            public int getPlayerHP() {
-                return playerHP;
-            }
-
-
             public String showPlayerHP() {
                     playerHP = startHP;
                     String hpStatus = "";
@@ -81,7 +79,7 @@ public class Player {
                     return hpStatus;
             }
 
-            public void takDamage(int damage){ //TODO: take damage does not work.
+            public void takDamage(int damage){
                 startHP -= damage;
             }
 
@@ -97,9 +95,20 @@ public class Player {
                 }
                 else status = Status.OKAY;
 
-                /*if (findItem(playerInventory,item) == null) {
-                    playerInventory.remove(item);
-                }*/
+                return status;
+            }
+
+            public Status equip(String item){
+                Status status = null;
+
+                if (findItem(playerInventory,item) == null){
+                    status = Status.NOTFOUND;
+                }
+                else if (!(findItem(playerInventory,item) instanceof Weapon)){
+                    status = Status.CANT;
+                }
+                else status = Status.OKAY;
+
                 return status;
             }
 

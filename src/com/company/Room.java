@@ -13,11 +13,13 @@ public class Room {
     private Room west;
 
     public ArrayList<Item> inventory = new ArrayList<>(); // inventory for rooms.
+    public ArrayList<Enemy> enemiesInRoom = new ArrayList<>(); // List of enemies.
 
     public Room(String name, String description){
         this.name = name;
         this.description = description;
     }
+
 
     public Room getNorth() {
         return north;
@@ -51,6 +53,11 @@ public class Room {
         this.west = west;
     }
 
+    public void addEnemy(Enemy enemy, Room currentRoom){
+        enemiesInRoom.add(enemy);
+        enemy.setCurrentRoom(currentRoom);
+    }
+
     public void addItemsToRoom(String itemN, String itemSN){
         Item item = new Item(itemN, itemSN);
         inventory.add(item);
@@ -79,6 +86,9 @@ public class Room {
         return inventory;
     }
 
+    public ArrayList<Enemy> getEnemiesInRoom() {
+        return enemiesInRoom;
+    }
 
     @Override
     public String toString() {

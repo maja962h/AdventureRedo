@@ -36,6 +36,7 @@ public class Adventure {
                         currentRoom = currentRoom.getNorth();
                         System.out.println(currentRoom);
                         System.out.println(currentRoom.getInventory());
+                        System.out.println(currentRoom.getEnemiesInRoom());
                     }
                     break;
 
@@ -46,6 +47,7 @@ public class Adventure {
                         currentRoom = currentRoom.getSouth();
                         System.out.println(currentRoom);
                         System.out.println(currentRoom.getInventory());
+                        System.out.println(currentRoom.getEnemiesInRoom());
                     }
                     break;
 
@@ -56,6 +58,7 @@ public class Adventure {
                         currentRoom = currentRoom.getWest();
                         System.out.println(currentRoom);
                         System.out.println(currentRoom.getInventory());
+                        System.out.println(currentRoom.getEnemiesInRoom());
                     }
                     break;
 
@@ -66,6 +69,7 @@ public class Adventure {
                         currentRoom = currentRoom.getEast();
                         System.out.println(currentRoom);
                         System.out.println(currentRoom.getInventory());
+                        System.out.println(currentRoom.getEnemiesInRoom());
                     }
                     break;
 
@@ -103,14 +107,14 @@ public class Adventure {
                     System.out.println("The gutter was very loose, and you fell down.");
                     player.takDamage(30);
                     System.out.println("\nYou lost 30 HP");
-                    System.out.println("Health status: " + player.showPlayerHP());
+                    System.out.println("Health status: " + player.getStartHP() + " " + player.showPlayerHP());
                     break;
 
                 case "jump":
                     System.out.println("You could not jump high enough, idiot. Your leg is now broken. boohoo.");
                     player.takDamage(50);
                     System.out.println("\nYou lost 50 HP");
-                    System.out.println("Health status: " + player.showPlayerHP());
+                    System.out.println("Health status: " + player.getStartHP() + " " + player.showPlayerHP());
                     break;
 
 
@@ -124,7 +128,7 @@ public class Adventure {
                     System.out.println(player.showPlayerHP());
                     break;
 
-                case "eat": // TODO: eat does not work
+                case "eat":
                     String foodToEat = input.next();
                     Status status = player.eat(foodToEat);
                     switch (status) {
@@ -134,6 +138,20 @@ public class Adventure {
                                 player.showPlayerHP() + ".");
                     }
                     break;
+
+                case "equip":
+                    String toEquip = input.next();
+                    Status status2 = player.equip(toEquip);
+                    switch (status2) {
+                        case NOTFOUND -> System.out.println("There is no " + toEquip + ".");
+                        case CANT -> System.out.println("You cannot equip " + toEquip + ".");
+                        case OKAY -> System.out.println("Yout have equipped " + toEquip + ".");
+                    }
+                    break;
+
+                /*case "attack":
+                    String toAttack = input.next();
+                    Status status1;*/
             }
 
 

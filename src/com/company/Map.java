@@ -74,6 +74,13 @@ public class Map {
         room3.addItems(new Food("apple", "a", 15));
         room6.addItems(new Food("protein bar", "p", 30));
 
+        // weapon:
+        room1.addItems((new Weapon("hammer", "h", 50)));
+
+        // Enemy:
+        Enemy enemy1 = new Enemy("dog", "\nvery dangerous doggo. worst goodboy", 20);
+        room9.addEnemy(enemy1, room9);
+
 
         startRoom = room1;
     }
